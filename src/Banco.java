@@ -1,9 +1,15 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Banco {
 
 	private String nome;
-	private List<Conta> contas;
+	private List<Conta> contasList;
+
+	public Banco(String nome) {
+		this.nome = nome;
+		this.contasList = new ArrayList<>();
+	}
 
 	public String getNome() {
 		return nome;
@@ -14,11 +20,22 @@ public class Banco {
 	}
 
 	public List<Conta> getContas() {
-		return contas;
+		return contasList;
 	}
 
-	public void setContas(List<Conta> contas) {
-		this.contas = contas;
+	public void adicionarContaNaLista(Conta contaAdicionada) {
+		contasList.add(contaAdicionada);
+		System.out.println("Conta " + contaAdicionada.getNumero() + "-" + contaAdicionada.getAgencia());
+	}
+
+	public void imprimirListaDeContas() {
+		System.out.println("====Lista de Contas====");
+		for(Conta c : contasList) {
+			System.out.println("--Conta--\n" +
+							   "Titular: " + c.getTitular() + "\n"
+							   + "Número: " + c.getNumero() + "\n"
+							   + "Agencia: " + c.getAgencia() + "\n");
+		}
 	}
 
 }
